@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.social_media_url = 'https://twitter.com/mxcl'
   s.authors  = { 'Max Howell' => 'mxcl@me.com' }
   s.documentation_url = 'http://promisekit.org/introduction/'
-  s.default_subspecs = 'Foundation', 'UIKit', 'QuartzCore'
+  s.default_subspecs = 'Foundation', 'ios.', 'QuartzCore'
   s.requires_arc = true
   s.ios.deployment_target = '8.0'
   s.osx.deployment_target = '10.9'
@@ -42,8 +42,10 @@ Pod::Spec.new do |s|
 
   s.subspec 'AVFoundation' do |ss|
     ss.ios.source_files = 'Categories/AVFoundation/*'
+    ss.tvos.source_files = 'Categories/AVFoundation/*'
     ss.dependency 'PromiseKit/CorePromise'
     ss.ios.frameworks = 'AVFoundation'
+    ss.tvos.frameworks = 'AVFoundation'
   end
 
   s.subspec 'Bolts' do |ss|
@@ -57,6 +59,7 @@ Pod::Spec.new do |s|
     ss.frameworks = 'CloudKit'
     ss.ios.deployment_target = '8.0'
     ss.osx.deployment_target = '10.10'
+    ss.tvos.deployment_target = '9.0'
   end
 
   s.subspec 'CorePromise' do |ss|
@@ -77,7 +80,8 @@ Pod::Spec.new do |s|
   s.subspec 'Foundation' do |ss|
     ss.ios.source_files = Dir['Categories/Foundation/*'] - Dir['Categories/Foundation/NSTask*']
     ss.osx.source_files = 'Categories/Foundation/*'
-	ss.watchos.source_files = Dir['Categories/Foundation/*'] - Dir['Categories/Foundation/NSTask*']
+    ss.watchos.source_files = Dir['Categories/Foundation/*'] - Dir['Categories/Foundation/NSTask*']
+    ss.tvos.source_files = Dir['Categories/Foundation/*'] - Dir['Categories/Foundation/NSTask*']
     ss.dependency 'PromiseKit/CorePromise'
     ss.dependency 'OMGHTTPURLRQ', '~> 3.0.0'
     ss.frameworks = 'Foundation'
@@ -111,7 +115,8 @@ Pod::Spec.new do |s|
 
   s.subspec 'QuartzCore' do |ss|
     ss.ios.source_files = 'Categories/QuartzCore/*'
-	ss.osx.source_files = 'Categories/QuartzCore/*'
+    ss.osx.source_files = 'Categories/QuartzCore/*'
+    ss.tvos.source_files = 'Categories/QuartzCore/*'
     ss.dependency 'PromiseKit/CorePromise'
     ss.frameworks = 'QuartzCore'
   end
@@ -137,8 +142,10 @@ Pod::Spec.new do |s|
 
   s.subspec 'UIKit' do |ss|
     ss.ios.source_files = 'Categories/UIKit/*'
+    ss.tvos.source_files = 'Categories/UIKit/*'
     ss.dependency 'PromiseKit/CorePromise'
     ss.ios.frameworks = 'UIKit'
+    ss.tvos.frameworks = 'UIKit'
   end
 
 
